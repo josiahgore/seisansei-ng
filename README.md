@@ -13,11 +13,11 @@ grunt serve
 
 ## Deployment
 
-**Note:** In order to deploy to an S3 website it is necessary to fill in AWS API keys in *grunt-aws.json*.
+**Note:** In order to deploy to an S3 website it is necessary to fill in AWS API keys in *config/grunt-aws.json*.
 
-This file is included in *.gitignore* for a reason. Do not commit credentials.
+All non-template files in *config/* are included in *.gitignore* for a reason. Do not commit credentials.
 
 ```
-grunt s3:<staging|production>
+grunt deploy:<staging|production>
 ```
 

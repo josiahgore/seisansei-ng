@@ -6,3 +6,5 @@ app/bower_components
 .idea/
 grunt-aws.json
 seisansei.iml
+config/
+!config/*template

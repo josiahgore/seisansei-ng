@@ -374,11 +374,11 @@ module.exports = function (grunt) {
       }
     },
 
-    aws: grunt.file.readJSON('./grunt-aws.json'),
     s3: {
+      aws: {},
       options: {
-        key: '<%= aws.key %>',
-        secret: '<%= aws.secret %>',
+        key: '<%= s3.aws.key %>',
+        secret: '<%= s3.aws.secret %>',
         access: 'public-read'
       },
       staging: {
@@ -408,6 +408,16 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.registerTask('deploy', function(target) {
+    var config = 'config/grunt-aws.json';
+    if (grunt.file.exists(config)) {
+      grunt.log.ok('Loading AWS configuration');
+      grunt.config.set('s3.aws', grunt.file.readJSON(config));
+    } else {
+      grunt.fail.warn('No AWS configuration exists');
+    }
+    return grunt.task.run(['build', 's3:' + target]);
+  });
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
