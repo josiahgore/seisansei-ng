@@ -3,7 +3,7 @@ seisansei (生産性)
 
 A foray into the world of productivity apps.
 
-# Installation
+## Installation
 
 ```
 npm install
@@ -11,13 +11,11 @@ bower install
 grunt serve
 ```
 
-**Note:** It is necessary to have an AWS API key configuration in a file named *grunt-aws.json* with the values
-```
-{
-  "key":
-}
+## Deployment
 
-# Deployment
+**Note:** In order to deploy to an S3 website it is necessary to fill in AWS API keys in *grunt-aws.json*.
+
+This file is included in *.gitignore* for a reason. Do not commit credentials.
 
 ```
 grunt s3:<staging|production>
