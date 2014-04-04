@@ -368,15 +368,31 @@ module.exports = function (grunt) {
 
     // Test settings
     karma: {
-      e2e: {
-        configFile: 'karma-e2e.conf.js'
-      },
       unit: {
-        configFile: 'karma.conf.js',
+        configFile: 'test/karma.conf.js',
         singleRun: true
       }
     },
 
+    protractor: {
+      options: {
+        configFile: "test/protractor.conf.js",
+        keepAlive: true, // If false, the grunt process stops when the test fails.
+        noColor: false, // If true, protractor will not use colors in its output.
+        args: {
+          seleniumServerJar: 'node_modules/protractor/selenium/selenium-server-standalone-2.40.0.jar',
+          chromeDriver: 'node_modules/protractor/selenium/chromedriver'
+        }
+      },
+      run: {
+//        options: {
+//          configFile: "e2e.conf.js", // Target-specific config file
+//          args: {} // Target-specific arguments
+//        }
+      }
+    },
+
+    // Deployment settings
     s3: {
       aws: {},
       options: {
@@ -469,6 +485,14 @@ module.exports = function (grunt) {
     'autoprefixer',
     'connect:test',
     'karma'
+  ]);
+
+  grunt.registerTask('e2e', [
+    'clean:server',
+    'concurrent:test',
+    'autoprefixer',
+    'connect:test',
+    'protractor:run'
   ]);
 
   grunt.registerTask('build', [
