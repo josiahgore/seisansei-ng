@@ -368,6 +368,9 @@ module.exports = function (grunt) {
 
     // Test settings
     karma: {
+      e2e: {
+        configFile: 'karma-e2e.conf.js'
+      },
       unit: {
         configFile: 'karma.conf.js',
         singleRun: true
@@ -405,7 +408,28 @@ module.exports = function (grunt) {
           }
         ]
       }
+    },
+
+    generate: {
+      options: {
+        src: '.grunt-templates',
+        dest: '<%= yeoman.app %>/scripts',
+        map: {
+          spec: '/test/spec'
+        },
+        prompt: false
+      }
     }
+  });
+
+  grunt.registerTask('g', function() {
+    if (2 !== this.args.length) {
+      grunt.fail.fatal('Component generation takes 2 arguments: grunt g:<type>:<name>');
+    }
+    var type = this.args[0];
+    var name = this.args[1];
+    grunt.task.run('generate:' + type + ':' + name + '@' + type + 's');
+    grunt.task.run('generate:spec/' + type + ':' + name + '@' + type + 's');
   });
 
   grunt.registerTask('deploy', function(target) {

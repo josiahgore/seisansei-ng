@@ -36,7 +36,8 @@
     "karma-coverage": "~0.2.1",
     "grunt-s3": "~0.2.0-alpha.3",
     "karma-firefox-launcher": "~0.1.3",
-    "karma-phantomjs-launcher": "~0.1.3"
+    "karma-phantomjs-launcher": "~0.1.3",
+    "grunt-generate": "~0.3.0"
   },
   "engines": {
     "node": ">=0.10.0"
