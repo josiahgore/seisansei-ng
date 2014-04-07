@@ -86,7 +86,7 @@ exports.config = {
   //
   // A base URL for your application under test. Calls to protractor.get()
   // with relative paths will be prepended with this.
-  baseUrl: 'http://localhost:' + (process.env.HTTP_PORT || '8000'),
+  baseUrl: 'http://localhost:9000',
 
   // Selector for the element housing the angular app - this defaults to
   // body, but is necessary if ng-app is on a descendant of <body>  
@@ -129,7 +129,7 @@ exports.config = {
     // onComplete will be called just before the driver quits.
     onComplete: null,
     // If true, display spec names.
-    isVerbose: false,
+    isVerbose: true,
     // If true, print colors to the terminal.
     showColors: true,
     // If true, include stack traces in failures.

@@ -1,0 +1,10 @@
+<section role="main">
+  <h1 class="section-header">My Tasks</h1>
+  <div class="tasks" ng-controller="TaskListCtrl">
+    <ol class="task-list">
+      <li class="task" ng-class="{open: task.active}" ng-repeat="task in tasks">
+        <div task="task" ng-bind="task.name"></div>
+      </li>
+    </ol>
+  </div>
+</section>

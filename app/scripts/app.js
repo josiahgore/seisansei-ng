@@ -5,15 +5,25 @@ angular
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute'
+    'ngRoute',
+
+    'ui.router'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+
+  .config(function ($locationProvider, $urlRouterProvider, $stateProvider) {
+    $locationProvider.hashPrefix('!');
+
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+      .state('tasks', {
+        url: '/',
+        templateUrl: 'views/tasks.html'
       })
-      .otherwise({
-        redirectTo: '/'
+      .state('settings', {
+        url: '/settings',
+        templateUrl: 'views/settings.html'
       });
-  });
+  })
+
+;

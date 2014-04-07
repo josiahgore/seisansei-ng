@@ -376,7 +376,7 @@ module.exports = function (grunt) {
 
     protractor: {
       options: {
-        configFile: "test/protractor.conf.js",
+        configFile: 'test/protractor.conf.js',
         keepAlive: true, // If false, the grunt process stops when the test fails.
         noColor: false, // If true, protractor will not use colors in its output.
         args: {
@@ -488,10 +488,6 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('e2e', [
-    'clean:server',
-    'concurrent:test',
-    'autoprefixer',
-    'connect:test',
     'protractor:run'
   ]);
 
@@ -515,6 +511,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'newer:jshint',
     'test',
+    'e2e',
     'build'
   ]);
 };
