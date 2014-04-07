@@ -2,6 +2,6 @@
 
 angular.module('seisanseiApp')
 
-  .controller('TaskListCtrl', function ($scope) {
-    $scope.tasks = [];
+  .controller('TaskListCtrl', function ($scope, Task) {
+    $scope.tasks = Task.all();
   });
