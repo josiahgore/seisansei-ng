@@ -4,18 +4,25 @@ angular.module('seisanseiApp')
 
   .factory('Task', function ($rootScope, LocalStorage) {
     var service = $rootScope.$new();
-    var storageKey = 'seisansei.tasks';
 
-    var storedTasks = LocalStorage.getItem(storageKey);
-    if (storedTasks) {
-      service.tasks = JSON.parse(storedTasks);
-    } else {
-      service.tasks = [];
-    }
+    service.storageKey = 'seisansei.tasks';
+    service._load = function () {
+      var storedTasks = LocalStorage.getItem(service.storageKey);
+      if (storedTasks) {
+        service.tasks = JSON.parse(storedTasks);
+      } else {
+        service.tasks = [];
+      }
+    };
+    service._load();
 
     service.all = function () {
       return service.tasks;
     };
+
+    service.$on('$destroy', function () {
+      // flush tasks to disk
+    });
 
     return service;
   });

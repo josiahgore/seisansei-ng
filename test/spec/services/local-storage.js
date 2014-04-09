@@ -7,6 +7,10 @@ describe('Service: LocalStorage', function () {
     module('seisanseiApp');
   });
 
+  it('injects successfully', inject(function (LocalStorage) {
+    expect(typeof(LocalStorage) === 'object');
+  }));
+
   it('should successfully store and retrieve data', inject(function (LocalStorage) {
     var key = 'my key';
     expect(LocalStorage.getItem(key)).toBe(null);

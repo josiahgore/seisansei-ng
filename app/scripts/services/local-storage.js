@@ -36,7 +36,7 @@ angular.module('seisanseiApp')
           removeItem: function(key) {
             delete dataStore[key];
           }
-        }
+        };
       })();
     }
 
