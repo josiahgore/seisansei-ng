@@ -4,8 +4,11 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
+@import "variables";
+
 @import "chrome";
 @import "tasks";
+@import "off-canvas";
 
 .browsehappy {
   margin: 0.2em 0;
@@ -31,5 +34,9 @@ a {
 @media screen and (min-width: $screen-sm-min) {
   body {
     max-width: 730px;
+  }
+
+  .nav {
+    display: block;
   }
 }

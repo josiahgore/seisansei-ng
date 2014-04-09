@@ -19,23 +19,23 @@
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
 </head>
-<body>
+<body ng-class="viewset">
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <div ng-controller="MainCtrl" class="container-fluid">
   <header>
-    <div class="header">
-      <a class="header-action nav-open"><i class="fa fa-bars"></i></a>
+    <div ng-if="viewset === 'mobile'" class="header">
+      <a ng-click="nav.toggle()" class="header-action nav-open"><i class="fa fa-bars"></i></a>
       <span class="header-text">生産性</span>
       <a class="header-action task-open"><i class="fa fa-plus"></i></a>
     </div>
   </header>
   <nav role="navigation">
-    <div class="nav">
+    <div class="nav" ng-class="{'off-canvas off-canvas-left': viewset === 'mobile'}">
       <ul class="menu">
-        <li ng-repeat="menuItem in menuItems">
+        <li class="menu-item" ng-repeat="menuItem in menuItems">
           <a ui-sref="{{ menuItem.sref }}" ng-bind="menuItem.name"></a>
         </li>
       </ul>

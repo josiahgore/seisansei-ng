@@ -7,6 +7,6 @@ angular.module('seisanseiApp')
 
     $scope.addTask = function (task) {
       $scope.tasks.$add(task);
-    }
+    };
 
   });

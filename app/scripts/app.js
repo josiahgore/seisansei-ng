@@ -1,3 +1,4 @@
+/* global _ */
 'use strict';
 
 angular
@@ -29,4 +30,22 @@ angular
       });
   })
 
+  .run(function($rootScope, $window) {
+    var win = angular.element($window);
+    var updateDimensions = function() {
+      $rootScope.viewport = $rootScope.viewport || {};
+      if (typeof(win.innerWidth) !== 'undefined' && typeof(win.innerHeight) !== 'undefined') {
+        $rootScope.viewport.width = win.innerWidth();
+        $rootScope.viewport.height = win.innerHeight();
+      }
+      $rootScope.viewset = 'mobile';
+      if ($rootScope.viewport.width >= 768) {
+        $rootScope.viewset = 'desktop';
+      }
+    };
+    win.on('resize', _.throttle(function() {
+      $rootScope.$apply(updateDimensions);
+    }, 50));
+    updateDimensions();
+  })
 ;

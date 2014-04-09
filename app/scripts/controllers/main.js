@@ -15,4 +15,10 @@ angular.module('seisanseiApp')
       }
     ];
 
+    $scope.nav = {
+      toggle: function () {
+        angular.element('body').toggleClass('off-canvas-left-open');
+      }
+    };
+
   });

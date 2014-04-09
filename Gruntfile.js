@@ -397,7 +397,7 @@ module.exports = function (grunt) {
       options: {
         space: '  ',
         dest: '<%= yeoman.app %>/scripts/config.js',
-        wrap: '"use strict";\n\n {%= __ngModule %}',
+        wrap: '/* jshint ignore:start */\n\n {%= __ngModule %}\n\n/* jshint ignore:end */',
         name: 'seisanseiApp.config'
       },
       development: {

@@ -1,0 +1,66 @@
+
+#wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  -webkit-transition: left .25s ease, right .25s ease, margin-left .25s ease, margin-right .25s ease;
+  -moz-transition: left .25s ease, right .25s ease, margin-left .25s ease, margin-right .25s ease;
+  -o-transition: left .25s ease, right .25s ease, margin-left .25s ease, margin-right .25s ease;
+  transition: left .25s ease, right .25s ease, margin-left .25s ease, margin-right .25s ease;
+}
+
+.off-canvas.off-canvas-right,
+.off-canvas.off-canvas-left {
+  position: fixed;
+  top: $header-height;
+  height: 100%;
+  width: 100%;
+}
+
+.off-canvas.off-canvas-right {
+  right: -100%;
+  -webkit-transition: right .25s ease, margin-right .25s ease;
+  -moz-transition: right .25s ease, margin-right .25s ease;
+  -o-transition: right .25s ease, margin-right .25s ease;
+  transition: right .25s ease, margin-right .25s ease;
+}
+
+.off-canvas.off-canvas-left {
+  left: -100%;
+  padding-left: 60px;
+  -webkit-transition: left .25s ease, margin-left .25s ease;
+  -moz-transition: left .25s ease, margin-left .25s ease;
+  -o-transition: left .25s ease, margin-left .25s ease;
+  transition: left .25s ease, margin-left .25s ease;
+}
+
+body.off-canvas-left-open {
+  #wrapper {
+    position: absolute;
+    left: 100%;
+    right: initial;
+    width: 100%;
+    margin-left: -60px;
+  }
+  .off-canvas.off-canvas-left {
+    left: 0;
+    margin-left: -60px;
+  }
+}
+
+body.off-canvas-right-open {
+  #wrapper {
+    position: absolute;
+    left: initial;
+    right: 100%;
+    width: 100%;
+  }
+  .off-canvas.off-canvas-right {
+    position: absolute;
+  }
+}
+
+@media screen and (min-width: $screen-sm-min) {
+
+}
