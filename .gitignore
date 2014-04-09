@@ -8,3 +8,5 @@ grunt-aws.json
 seisansei.iml
 .config/
 !.config/*template
+/app/scripts/config.js
+/design/

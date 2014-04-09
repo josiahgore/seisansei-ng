@@ -7,7 +7,10 @@ angular
     'ngSanitize',
     'ngRoute',
 
-    'ui.router'
+    'ui.router',
+    'firebase',
+
+    'seisanseiApp.config'
   ])
 
   .config(function ($locationProvider, $urlRouterProvider, $stateProvider) {

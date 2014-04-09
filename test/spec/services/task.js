@@ -11,13 +11,14 @@ describe('Service: Task', function () {
     expect(typeof(Task) === 'object');
   }));
 
-  it('pulls tasks from local storage', inject(function (Task, LocalStorage) {
+  it('pulls tasks from firebase', inject(function (Task, firebaseMock) {
     var tasks = Task.all();
     expect(tasks.length).toBe(0);
-    LocalStorage.setItem(Task.storageKey, JSON.stringify([{
+    firebaseMock.add({
       name: 'test task',
       description: 'it is a test, ok?'
-    }]));
+    });
+
     Task._load();
     tasks = Task.all();
     expect(tasks.length).toBe(1);

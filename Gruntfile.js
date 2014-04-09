@@ -392,6 +392,46 @@ module.exports = function (grunt) {
       }
     },
 
+    // Environment configurations
+    ngconstant: {
+      options: {
+        space: '  ',
+        dest: '<%= yeoman.app %>/scripts/config.js',
+        wrap: '"use strict";\n\n {%= __ngModule %}',
+        name: 'seisanseiApp.config'
+      },
+      development: {
+        constants: {
+          ENV: 'development',
+          PERSISTENCE_MODE: 'firebase',
+          FIREBASE_URL: 'https://josiahgore.firebaseio.com'
+        },
+        values: {
+          DEBUG: true
+        }
+      },
+      staging: {
+        constants: {
+          ENV: 'staging',
+          PERSISTENCE_MODE: 'firebase',
+          FIREBASE_URL: 'https://josiahgore.firebaseio.com'
+        },
+        values: {
+          DEBUG: true
+        }
+      },
+      production: {
+        constants: {
+          ENV: 'production',
+          PERSISTENCE_MODE: 'firebase',
+          FIREBASE_URL: 'https://josiahgore.firebaseio.com'
+        },
+        values: {
+          DEBUG: false
+        }
+      }
+    },
+
     // Deployment settings
     s3: {
       aws: {},
@@ -466,6 +506,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'ngconstant:development',
       'bowerInstall',
       'concurrent:server',
       'autoprefixer',
@@ -491,22 +532,26 @@ module.exports = function (grunt) {
     'protractor:run'
   ]);
 
-  grunt.registerTask('build', [
-    'clean:dist',
-    'bowerInstall',
-    'useminPrepare',
-    'concurrent:dist',
-    'autoprefixer',
-    'concat',
-    'ngmin',
-    'copy:dist',
-    'cdnify',
-    'cssmin',
-    'uglify',
-    'rev',
-    'usemin',
-    'htmlmin'
-  ]);
+  grunt.registerTask('build', function (target) {
+    target = target || 'production';
+    grunt.task.run([
+      'clean:dist',
+      'bowerInstall',
+      'ngconstant:' + target,
+      'useminPrepare',
+      'concurrent:dist',
+      'autoprefixer',
+      'concat',
+      'ngmin',
+      'copy:dist',
+      'cdnify',
+      'cssmin',
+      'uglify',
+      'rev',
+      'usemin',
+      'htmlmin'
+    ]);
+  });
 
   grunt.registerTask('default', [
     'newer:jshint',

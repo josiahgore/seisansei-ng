@@ -2,16 +2,21 @@
 
 angular.module('seisanseiApp')
 
-  .factory('Task', function ($rootScope, LocalStorage) {
+  .factory('Task', function ($rootScope, LocalStorage, $firebase, Firebase, PERSISTENCE_MODE, FIREBASE_URL) {
     var service = $rootScope.$new();
 
     service.storageKey = 'seisansei.tasks';
     service._load = function () {
-      var storedTasks = LocalStorage.getItem(service.storageKey);
-      if (storedTasks) {
-        service.tasks = JSON.parse(storedTasks);
+      if (PERSISTENCE_MODE === 'firebase') {
+        var taskRef = new Firebase(FIREBASE_URL + '/task');
+        service.tasks = $firebase(taskRef);
       } else {
-        service.tasks = [];
+        var storedTasks = LocalStorage.getItem(service.storageKey);
+        if (storedTasks) {
+          service.tasks = JSON.parse(storedTasks);
+        } else {
+          service.tasks = [];
+        }
       }
     };
     service._load();
