@@ -403,7 +403,6 @@ module.exports = function (grunt) {
       development: {
         constants: {
           ENV: 'development',
-          PERSISTENCE_MODE: 'firebase',
           FIREBASE_URL: 'https://josiahgore.firebaseio.com'
         },
         values: {
@@ -413,7 +412,6 @@ module.exports = function (grunt) {
       staging: {
         constants: {
           ENV: 'staging',
-          PERSISTENCE_MODE: 'firebase',
           FIREBASE_URL: 'https://josiahgore.firebaseio.com'
         },
         values: {
@@ -423,8 +421,7 @@ module.exports = function (grunt) {
       production: {
         constants: {
           ENV: 'production',
-          PERSISTENCE_MODE: 'firebase',
-          FIREBASE_URL: 'https://josiahgore.firebaseio.com'
+          FIREBASE_URL: 'https://seisansei.firebaseio.com'
         },
         values: {
           DEBUG: false

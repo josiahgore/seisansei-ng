@@ -1,6 +1,22 @@
 <section role="main">
   <h1 class="section-header">My Tasks</h1>
   <div class="tasks" ng-controller="TaskListCtrl">
+    <div class="actions">
+      <button ng-click="task.new = {}">Add Task</button>
+    </div>
+    <div ng-if="task.new" class="new-task">
+      <div class="input-row">
+        <label for="taskName">Name</label>
+        <input type="text" name="taskName" id="taskName" ng-model="task.new.name"/>
+      </div>
+      <div class="input-row">
+        <label for="taskDescription">Description</label>
+        <input type="text" name="taskDescription" id="taskDescription" ng-model="task.new.description"/>
+      </div>
+      <div class="input-row">
+        <button type="submit" ng-click="addTask(task.new);task.new = null;">Add</button>
+      </div>
+    </div>
     <ol class="task-list">
       <li class="task" ng-class="{open: task.active}" ng-repeat="task in tasks">
         <div task="task" ng-bind="task.name"></div>

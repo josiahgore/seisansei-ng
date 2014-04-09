@@ -12,15 +12,12 @@ describe('Service: Task', function () {
   }));
 
   it('pulls tasks from firebase', inject(function (Task, firebaseMock) {
-    var tasks = Task.all();
+    var tasks = Task;
     expect(tasks.length).toBe(0);
     firebaseMock.add({
       name: 'test task',
       description: 'it is a test, ok?'
     });
-
-    Task._load();
-    tasks = Task.all();
     expect(tasks.length).toBe(1);
     expect(tasks[0].name).toBe('test task');
   }));
