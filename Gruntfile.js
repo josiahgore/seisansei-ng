@@ -308,7 +308,8 @@ module.exports = function (grunt) {
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
             'styles/fonts/*',
-            'bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/*'
+            'bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/*',
+            'bower_components/components-font-awesome/fonts/*'
           ]
         }, {
           expand: true,
