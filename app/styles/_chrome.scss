@@ -1,0 +1,30 @@
+
+.header {
+  @include make-row();
+  height: 40px;
+  line-height: 40px;
+  vertical-align: middle;
+  background-color: $brand-primary;
+  color: white;
+
+  .header-text,
+  .header-action {
+    @include make-xs-column(4);
+    text-align: center;
+  }
+
+  .header-action:nth-child(1) {
+    text-align: left;
+  }
+  .header-action:nth-child(3) {
+    text-align: right;
+  }
+
+}
+
+@media screen and (min-width: $screen-sm-min) {
+
+  .header {
+    display: none;
+  }
+}
