@@ -1,25 +1,24 @@
 <section role="main">
-  <h1 class="section-header">My Tasks</h1>
   <div class="tasks" ng-controller="TaskListCtrl">
-    <div class="actions">
-      <button ng-click="task.new = {}">Add Task</button>
-    </div>
+    <h1 class="section-header" ng-bind="headerText"></h1>
     <div ng-if="task.new" class="new-task">
+      <form name="taskForm">
       <div class="input-row">
         <label for="taskName">Name</label>
-        <input type="text" name="taskName" id="taskName" ng-model="task.new.name"/>
+        <input type="text" name="taskName" id="taskName" required ng-model="task.new.name"/>
       </div>
       <div class="input-row">
         <label for="taskDescription">Description</label>
         <input type="text" name="taskDescription" id="taskDescription" ng-model="task.new.description"/>
       </div>
       <div class="input-row">
-        <button type="submit" ng-click="addTask(task.new);task.new = null;">Add</button>
+        <button type="submit" ng-disabled="taskForm.$invalid" ng-click="addTask(task.new);task.new = null;">Add</button>
       </div>
+      </form>
     </div>
     <ol class="task-list">
       <li class="task" ng-class="{open: task.active}" ng-repeat="task in tasks">
-        <div task="task" ng-bind="task.name"></div>
+        <div task="task"></div>
       </li>
     </ol>
   </div>

@@ -4,6 +4,10 @@
   .new-task {
 
   }
+
+  .task-list {
+    list-style: none;
+  }
 }
 
 @media screen and (min-width: $screen-sm-min) {

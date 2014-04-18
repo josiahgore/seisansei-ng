@@ -23,12 +23,22 @@ module.exports = function(config) {
 
       'app/scripts/*.js',
       'app/scripts/**/*.js',
+      'app/views/tpls/*.html',
       'test/mock/**/*.js',
       'test/spec/**/*.js'
     ],
 
     // list of files / patterns to exclude
     exclude: [],
+
+    // generate js files from html templates
+    preprocessors: {
+      'app/views/tpls/*.html': 'ng-html2js'
+    },
+
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'app/'
+    },
 
     // web server port
     port: 8080,
@@ -50,7 +60,7 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['Firefox', 'PhantomJS'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode

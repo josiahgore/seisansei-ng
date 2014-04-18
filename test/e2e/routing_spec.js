@@ -14,7 +14,7 @@ describe('seisansei routing', function () {
     menu = element.all(by.repeater('menuItem in menuItems'));
 
     element(by.css('.menu li:nth-child(1) > a')).click().then(function () {
-      expect(element(by.css('h1.section-header')).getText()).toContain('Tasks');
+      expect(element(by.css('h1.section-header')).getText()).toContain('Today');
     });
     element(by.css('.menu li:nth-child(2) > a')).click().then(function () {
       expect(element(by.css('h1.section-header')).getText()).toContain('Settings');

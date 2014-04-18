@@ -10,3 +10,4 @@ seisansei.iml
 !.config/*template
 /app/scripts/config.js
 /design/
+.DS_Store
